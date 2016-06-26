@@ -23,7 +23,8 @@ class Principal:
         self.criterio = builder.get_object('criterio')
         self.filtro = builder.get_object('filtro')
         self.statusbar = builder.get_object('statusbar')
-        self.ventana.show()
+        self.on_refrescar_clicked()
+        self.ventana.show_all()
 
     def mostrar_status(self):
         registros = db.contar_registros('usuarios')
@@ -32,7 +33,7 @@ class Principal:
         self.statusbar.push(context_id, buff)
 
     def lista_ordenada_por_id(self, *args):
-        self.cargar_lista(db.usuarios_ordenados_por_id())
+        self.cargar_lista(db.consultar_usuarios())
 
     def cargar_lista(self, tupla):
         print(tupla)
@@ -87,21 +88,21 @@ class Principal:
 
         # self.cargar_lista(self.resultado)
 
-    # def on_refrescar_clicked(self,*args):
-        # self.mostrar_status()
-        # self.lista_ordenada_por_id()
+    def on_refrescar_clicked(self,*args):
+        self.mostrar_status()
+        self.lista_ordenada_por_id()
 
     # def on_propiedades_clicked(self,*args):
        # self.on_arbol_row_activated()
 
-    # def on_imprimir_clicked(self,*args):
-        # pass
+    def on_imprimir_clicked(self,*args):
+        pass
 
-    # def on_cerrar_clicked(self, *args):
-        # self.on_ventana_destroy()
+    def on_cerrar_clicked(self, *args):
+        self.on_ventana_destroy()
 
-    # def on_ventana_destroy(self, *args):
-        # self.ventana.destroy()
+    def on_ventana_destroy(self, *args):
+        self.ventana.destroy()
 
     # def on_arbol_row_activated(self, *args):
         # (Modelo, f) = self.arbol.get_selection().get_selected()

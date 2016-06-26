@@ -4,9 +4,9 @@
   <requires lib="gtk+" version="3.12"/>
   <object class="GtkListStore" id="lista_arbol">
     <columns>
+      <!-- column-name gint1 -->
+      <column type="gint"/>
       <!-- column-name gchararray1 -->
-      <column type="gchararray"/>
-      <!-- column-name gchararray2 -->
       <column type="gchararray"/>
     </columns>
   </object>
@@ -27,6 +27,8 @@
   <object class="GtkApplicationWindow" id="ventana">
     <property name="can_focus">False</property>
     <property name="window_position">center-always</property>
+    <property name="default_width">800</property>
+    <property name="default_height">600</property>
     <child>
       <object class="GtkBox" id="box1">
         <property name="visible">True</property>
