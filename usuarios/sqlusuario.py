@@ -39,13 +39,13 @@ class DB:
 
     def eliminar_usuario(self, codigo):
         self.conectar()
-        sql = "DELETE FROM usuarios WHERE idusuario = '%s'" % (codigo)
+        sql = "DELETE FROM usuarios WHERE usuario_id = '%s'" % (codigo)
         self.cursor.execute(sql)
         self.desconectar()
 
     def consultar_usuario_por_id(self, codigo):
         self.conectar()
-        sql = "SELECT idusuario, nombre FROM usuarios WHERE idusuario = '%s'" % (codigo)
+        sql = "SELECT usuario_id, nombre FROM usuarios WHERE usuario_id = '%s'" % (codigo)
         self.cursor.execute(sql)
         nombre = self.cursor.fetchall()
         self.desconectar
@@ -54,7 +54,7 @@ class DB:
     def consultar_usuario_por_nombre_aprox(self, nombre):
         self.conectar()
         nombre = nombre + '%'
-        sql = "SELECT idusuario, nombre FROM usuarios WHERE nombre LIKE '%s'" % (nombre)
+        sql = "SELECT usuario_id, nombre FROM usuarios WHERE nombre LIKE '%s'" % (nombre)
         self.cursor.execute(sql)
         usuarios = self.cursor.fetchall()
         self.desconectar
@@ -62,7 +62,7 @@ class DB:
 
     def consultar_usuario_por_nombre(self, nombre):
         self.conectar()
-        sql = "SELECT idusuario, nombre FROM usuarios WHERE nombre == '%s'" % (nombre)
+        sql = "SELECT usuario_id, nombre FROM usuarios WHERE nombre == '%s'" % (nombre)
         self.cursor.execute(sql)
         usuarios = self.cursor.fetchall()
         self.desconectar
@@ -70,7 +70,7 @@ class DB:
 
     def consultar_usuarios(self):
         self.conectar()
-        sql = "SELECT idusuario, nombre FROM usuarios ORDER BY idusuario"
+        sql = "SELECT usuario_id, nombre FROM usuarios ORDER BY usuario_id"
         self.cursor.execute(sql)
         listado = self.cursor.fetchall()
         self.desconectar()

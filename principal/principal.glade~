@@ -2,7 +2,7 @@
 <!-- Generated with glade 3.18.3 -->
 <interface>
   <requires lib="gtk+" version="3.12"/>
-  <object class="GtkApplicationWindow" id="ventana">
+  <object class="GtkApplicationWindow" id="applicationwindow1">
     <property name="can_focus">False</property>
     <child>
       <object class="GtkBox" id="box1">
@@ -10,7 +10,7 @@
         <property name="can_focus">False</property>
         <property name="orientation">vertical</property>
         <child>
-          <object class="GtkMenuBar" id="menubar">
+          <object class="GtkMenuBar" id="menubar1">
             <property name="visible">True</property>
             <property name="can_focus">False</property>
             <child>
@@ -71,7 +71,7 @@
           </packing>
         </child>
         <child>
-          <object class="GtkStatusbar" id="statusbar">
+          <object class="GtkStatusbar" id="statusbar1">
             <property name="visible">True</property>
             <property name="can_focus">False</property>
             <property name="margin_left">10</property>
