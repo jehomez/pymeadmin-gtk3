@@ -54,7 +54,7 @@ class DB:
     def consultar_usuario_por_nombre_aprox(self, nombre):
         self.conectar()
         nombre = nombre + '%'
-        sql = "SELECT usuario_id, nombre FROM usuarios WHERE nombre LIKE '%s'" % (nombre)
+        sql = "SELECT usuario_id, nombre FROM usuarios WHERE nombre LIKE '%s' order by nombre" % (nombre)
         self.cursor.execute(sql)
         usuarios = self.cursor.fetchall()
         self.desconectar
