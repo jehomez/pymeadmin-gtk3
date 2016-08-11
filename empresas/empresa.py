@@ -3,7 +3,7 @@
 import gi
 gi.require_version('Gtk', '3.0')
 from gi.repository import Gtk
-from sqlusuario import DB
+from sqlempresa import DB
 
 db = DB()
 class Principal:
@@ -27,13 +27,13 @@ class Principal:
         self.ventana.show_all()
 
     def mostrar_status(self):
-        registros = db.contar_registros('usuarios')
-        buff = "Total de usuarios registrados: %s" % registros
-        context_id = self.statusbar.get_context_id('Total de usuarios registrados: ')
+        registros = db.contar_registros('empresas')
+        buff = "Total de empresas registradas: %s" % registros
+        context_id = self.statusbar.get_context_id('Total de empresas registradas: ')
         self.statusbar.push(context_id, buff)
 
     def lista_ordenada_por_id(self, *args):
-        self.cargar_lista(db.consultar_usuarios())
+        self.cargar_lista(db.consultar_empresas())
 
     def cargar_lista(self, tupla):
         print(tupla)
