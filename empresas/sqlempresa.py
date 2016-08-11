@@ -24,53 +24,53 @@ class DB:
         self.desconectar()
         return registros
 
-    def agregar_usuario(self, nombre, clave):
+    def agregar_empresa(self, empresa_id, empresa, rif, direccion, web, telefonos, fax, contacto, email):
         self.conectar()
         a = nombre.upper()
-        sql = "INSERT INTO usuarios( nombre, clave) VALUES('%s','%s')" % (nombre, clave)
+        sql = "INSERT INTO empresas(empresa_id, empresa, rif, direccion, web, telefonos, fax, contacto, email) VALUES('%s','%s', '%s','%s','%s','%s','%s','%s')" % (empresa, rif, direccion, web, telefonos, fax, contacto, empresa_id)
         self.cursor.execute(sql)
         self.desconectar()
 
-    def modificar_usuario(self, nombre, clave):
+    def modificar_empresa(self, empresa, rif, direccion, web, telefonos, fax, contacto, email, empresa_id):
         self.conectar()
-        sql = "UPDATE usuarios SET clave ='%s' WHERE nombre == '%s'" % (clave, nombre)
+        sql = "UPDATE empresas SET empresa, rif, direccion, web, telefonos, fax, contacto, email ='%s' WHERE empresa_id == '%s'" % (empresa, rif, direccion, web, telefonos, fax, contacto, email, empresa_id)
         self.cursor.execute(sql)
         self.desconectar()
 
-    def eliminar_usuario(self, codigo):
+    def eliminar_empresa(self, codigo):
         self.conectar()
-        sql = "DELETE FROM usuarios WHERE usuario_id = '%s'" % (codigo)
+        sql = "DELETE FROM empresas WHERE empresa_id = '%s'" % (codigo)
         self.cursor.execute(sql)
         self.desconectar()
 
-    def consultar_usuario_por_id(self, codigo):
+    def consultar_empresa_por_id(self, codigo):
         self.conectar()
-        sql = "SELECT usuario_id, nombre FROM usuarios WHERE usuario_id = '%s'" % (codigo)
+        sql = "SELECT empresa_id, empresa, rif, direccion, web, telefonos, fax, contacto, email FROM empresas WHERE empresa_id = '%s'" % (codigo)
         self.cursor.execute(sql)
         nombre = self.cursor.fetchall()
         self.desconectar
         return nombre
 
-    def consultar_usuario_por_nombre_aprox(self, nombre):
+    def consultar_empresa_por_nombre_aprox(self, nombre):
         self.conectar()
         nombre = nombre + '%'
-        sql = "SELECT usuario_id, nombre FROM usuarios WHERE nombre LIKE '%s' order by nombre" % (nombre)
+        sql = "SELECT empresa_id, empresa, rif, direccion, web, telefonos, fax, contacto, email FROM empresas WHERE empresa LIKE '%s' order by nombre" % (nombre)
         self.cursor.execute(sql)
-        usuarios = self.cursor.fetchall()
+        empresas = self.cursor.fetchall()
         self.desconectar
-        return usuarios
+        return empresas
 
-    def consultar_usuario_por_nombre(self, nombre):
+    def consultar_empresa_por_nombre(self, nombre):
         self.conectar()
-        sql = "SELECT usuario_id, nombre FROM usuarios WHERE nombre == '%s'" % (nombre)
+        sql = "SELECT empresa_id, empresa, rif, direccion, web, telefonos, fax, contacto, email FROM empresas WHERE empresa == '%s'" % (nombre)
         self.cursor.execute(sql)
-        usuarios = self.cursor.fetchall()
+        empresas = self.cursor.fetchall()
         self.desconectar
-        return usuarios
+        return empresas
 
-    def consultar_usuarios(self):
+    def consultar_empresas(self):
         self.conectar()
-        sql = "SELECT usuario_id, nombre FROM usuarios ORDER BY usuario_id"
+        sql = "SELECT empresa_id, empresa, rif, direccion, web, telefonos, fax, contacto, email FROM empresas ORDER BY empresa_id"
         self.cursor.execute(sql)
         listado = self.cursor.fetchall()
         self.desconectar()
