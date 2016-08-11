@@ -5,5 +5,5 @@ from sqlusuario import DB
 
 
 db = DB()
-lista = db.consultar_usuarios()
+lista = db.consultar_empresas()
 print(lista)
