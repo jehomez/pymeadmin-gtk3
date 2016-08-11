@@ -1,6 +1,6 @@
 #!/usr/bin/env python3
 # -*- coding: utf-8 -*-
-from sqlusuario import DB
+from sqlempresa import DB
 
 
 
