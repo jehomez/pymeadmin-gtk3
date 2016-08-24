@@ -1,12 +1,12 @@
 #!/usr/bin/env python3
 # -*- coding: utf-8 -*-
-from psycopg2 import connect
+import sqlite3
 
 class DB:
 
     def conectar(self):
         try:
-            self.cnn = connect("dbname='admin0' user='postgres' password='root' host='localhost' port='5432'");
+            self.cnn = sqlite3.connect('/home/jesus/pymeadmin-gtk3/bd/admin.sqlite3')
             self.cursor = self.cnn.cursor()
         except:
             info('No se pudo establecer la conexion')

@@ -3,7 +3,8 @@
 from sqlusuario import DB
 
 
-
 db = DB()
-lista = db.consultar_usuarios()
+registros = db.contar_registros('usuarios')
+lista = db.consultar_usuarios();
+print(registros)
 print(lista)
